@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find Friends</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>                    
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Friends Express</h1>
+      <h3>Find your best friend!</h3>
+      <hr>
+      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> View Friends</button></a>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Add Friend</strong></h3>
+          </div>
+          <div class="panel-body">
+            <form method="POST" role="form">
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+
+              <div class="form-group">
+                <label for="q1">question1</label>
+                <input type="text" class="form-control" id="q1">
+              </div>
+
+              <div class="form-group">
+                <label for="q2">question2</label>
+                <input type="text" class="form-control" id="q2">
+              </div>
+
+              <div class="form-group">
+                <label for="q3">question3</label>
+                <input type="text" class="form-control" id="q3">
+              </div>
+
+              <div class="form-group">
+                <label for="q4">question4</label>
+                <input type="text" class="form-control" id="q4">
+              </div>
+
+              <div class="form-group">
+                <label for="q5">question5</label>
+                <input type="text" class="form-control" id="q5">
+              </div>
+
+              <div class="form-group">
+                <label for="q6">question6</label>
+                <input type="text" class="form-control" id="q6">
+              </div>
+
+              <div class="form-group">
+                <label for="q7">question7</label>
+                <input type="text" class="form-control" id="q7">
+              </div>
+
+              <div class="form-group">
+                <label for="q8">question8</label>
+                <input type="text" class="form-control" id="q8">
+              </div>
+
+              <div class="form-group">
+                <label for="q9">question9</label>
+                <input type="text" class="form-control" id="q9">
+              </div>
+
+              <div class="form-group">
+                <label for="q10">question10</label>
+                <input type="text" class="form-control" id="q10">
+              </div>
+
+              
+            </form>
+            <br>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-fire"></span> Add to the Survey</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // Question: What does this code do?
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newCharacter = {
+        name: $("#name").val().trim(),
+        q1: $("#q1").val().trim(),
+        q2: $("#q2").val().trim(),
+        q3: $("#q3").val().trim(),
+        q4: $("#q4").val().trim(),
+        q5: $("#q5").val().trim(),
+        q6: $("#q6").val().trim(),
+        q7: $("#q7").val().trim(),
+        q8: $("#q8").val().trim(),
+        q9: $("#q9").val().trim(),
+        q10: $("#q10").val().trim(),
+      };
+
+      // Question: What does this code do??
+      $.post("/api/new", newCharacter)
+      .then(function(data) {
+        console.log(data);
+        alert("Adding character...");
+      });
+    });
+  </script>
+
+</body>
+</html>
