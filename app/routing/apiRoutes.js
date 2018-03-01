@@ -7,7 +7,7 @@
 // Sets up the Express App
 // =============================================================
 
-var friends = require("../data/friends");
+
 
 //console.log("Comes from server.js " + myData);
 //console.log(myData.name);
@@ -28,13 +28,13 @@ console.log("Sum = " + friendsData[1].q1 + friendsData[1].q2);
 
 module.exports = function(app) {
  
-/*
+
 app.get("/api/friends", function(req, res) {
     res.json(friends);
   });
 
 // Get all characters
-
+/*
 app.get("/all", function(req, res) {
   res.json(friends);
 });
@@ -42,6 +42,7 @@ app.get("/all", function(req, res) {
 */
 
 // Search for Specific Friend - provides JSON
+/*  
   app.get("/api/:friends?", function(req, res) {
     var chosen = req.params.friends;
 
@@ -57,13 +58,13 @@ app.get("/all", function(req, res) {
     }
     return res.json(friends);
   });
-
-  app.post("/api/syrvey", function(req, res) {
+*/
+  app.post("/api/survey", function(req, res) {
     // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
     // It will do this by sending out the value "true" have a table
     // req.body is available since we're using the body-parser middleware
     
-      friends.push(req.body);
+      friendsData.push(req.body);
       res.json(true);
   });
 
@@ -80,7 +81,10 @@ app.get("/all", function(req, res) {
 
     console.log(newFriend);
 
-    friends.push(newFriend);
+    console.log(newFriend.q1);
+
+
+    friendsData.push(newFriend);
 
     res.json(newFriend);
   });
