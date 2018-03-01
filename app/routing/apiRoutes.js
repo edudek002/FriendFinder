@@ -1,60 +1,88 @@
 // ===============================================================================
 // LOAD DATA
 // We are linking our routes to a series of "data" sources.
-// These data sources hold arrays of information on characters
+// These data sources hold arrays of information on friends
 // ===============================================================================
-
-var express = require("express");
-//var bodyParser = require("body-parser");
-//var path = require("path");
 
 // Sets up the Express App
 // =============================================================
-var app = express();
 
-var tableData = require("../data/friends");
+var friends = require("../data/friends");
 
-app.get("/api/survey", function(req, res) {
-    res.json(tableData);
+//console.log("Comes from server.js " + myData);
+//console.log(myData.name);
+//console.log(myData.q1);
+//console.log(parseInt(myData.q1));
+
+
+
+var friendsData = require("../data/friends.js");
+
+console.log(friendsData);
+
+console.log(friendsData[1]);
+console.log(friendsData[1].name);
+console.log(friendsData[1].q1);
+console.log(friendsData[1].q2);
+console.log("Sum = " + friendsData[1].q1 + friendsData[1].q2);
+
+module.exports = function(app) {
+ 
+/*
+app.get("/api/friends", function(req, res) {
+    res.json(friends);
   });
 
 // Get all characters
-/*
+
 app.get("/all", function(req, res) {
-  res.json(characters);
+  res.json(friends);
 });
 
 */
 
-// Search for Specific Character (or all characters) - provides JSON
-app.get("/api/:characters?", function(req, res) {
-  var chosen = req.params.characters;
+// Search for Specific Friend - provides JSON
+  app.get("/api/:friends?", function(req, res) {
+    var chosen = req.params.friends;
 
-  if (chosen) {
-    console.log(chosen);
+    if (chosen) {
+      console.log(chosen);
 
-    for (var i = 0; i < characters.length; i++) {
-      if (chosen === characters[i].routeName) {
-        return res.json(characters[i]);
+      for (var i = 0; i < friends.length; i++) {
+        if (chosen === friends[i].routeName) {
+          return res.json(friends[i]);
+        }
       }
+      return res.json(false);
     }
-    return res.json(false);
-  }
-  return res.json(characters);
-});
+    return res.json(friends);
+  });
 
-// Create New Characters - takes in JSON input
-app.post("/api/new", function(req, res) {
-  // req.body hosts is equal to the JSON post sent from the user
-  // This works because of our body-parser middleware
-  var newcharacter = req.body;
-  // Using a RegEx Pattern to remove spaces from newCharacter
-  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-  newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+  app.post("/api/syrvey", function(req, res) {
+    // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
+    // It will do this by sending out the value "true" have a table
+    // req.body is available since we're using the body-parser middleware
+    
+      friends.push(req.body);
+      res.json(true);
+  });
 
-  console.log(newcharacter);
 
-  characters.push(newcharacter);
+  // Create New Friend - takes in JSON input
+  app.post("/api/new", function(req, res) {
 
-  res.json(newcharacter);
-});
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body-parser middleware
+    var newFriend = req.body;
+    // Using a RegEx Pattern to remove spaces from newCharacter
+    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+    newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
+
+    console.log(newFriend);
+
+    friends.push(newFriend);
+
+    res.json(newFriend);
+  });
+
+};

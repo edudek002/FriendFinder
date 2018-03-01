@@ -12,8 +12,6 @@ var PORT = process.env.PORT || 3000;
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-
                                
 // Routes
 // =============================================================
@@ -22,13 +20,8 @@ app.use(bodyParser.json());
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
 
-require("./app/routing/apiRoutes");
-require("./app/routing/htmlRoutes");
-
-
-// Basic route that sends the user first to the AJAX Page
-
-                           
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 
 // Starts the server to begin listening

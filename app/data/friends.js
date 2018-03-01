@@ -1,32 +1,32 @@
-var characters = [
+var friendsArray = [
  {
     routeName: "tom",
     name: "Tom",
-    role: "Jedi Master",
-    age: 42,
-    forcePoints: 2000
+    q1:1,
+    q2:2,
+    q3:3,
+    q4:4,
+    q5:5,
+    q6:1,
+    q7:2,
+    q8:3,
+    q9:4,
+    q10:5
   },
   {
-    routeName: "darthmaul",
-    name: "Darth Maul",
-    role: "Sith Lord",
-    age: 200,
-    forcePoints: 1200
-  },
-  {
-    routeName: "obiwankenobi",
-    name: "Obi Wan Kenobi",
-    role: "Jedi Master",
-    age: 55,
-    forcePoints: 1350
-  },
- { 
-    routeName: "anna",
-    name: "Anna",
-    role: "Jedi Master",
-    age: 32,
-    forcePoints: 1350
+    routeName: "mike",
+    name: "Mike",
+    q1:3,
+    q2:2,
+    q3:3,
+    q4:5,
+    q5:4,
+    q6:1,
+    q7:5,
+    q8:2,
+    q9:4,
+    q10:2
   }
 ];
 
-module.exports = characters;
+module.exports = friendsArray;

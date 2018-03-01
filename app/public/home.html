@@ -16,7 +16,7 @@
       <h1>Find Your Friends</h1>
       <h3>We are here to help you find your best friend!</h3>
       <hr>
-      <a href="/survey"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Add New Character</button></a>
+      <a href="/survey"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Add New Friend</button></a>
     </div>
     <div class="row">
 
@@ -24,7 +24,7 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Character Search</strong></h3>
+            <h3 class="panel-title"><strong>Friend Search</strong></h3>
           </div>
           <div class="panel-body">
             <input type="text" id="character-search" class="form-control">
@@ -42,7 +42,7 @@
           </div>
           <div class="panel-body">
             <div class="well">
-              <h2 id="name">Yoda</h2>
+              <h2 id="name">Anna</h2>
               <div id="stats">
                 <h3><strong>q1:</strong> <span id="q1">blue</span></h3>
                 <h3><strong>q2:</strong> <span id="q2">fall</span></h3>
@@ -71,7 +71,7 @@
       // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
       searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
 
-      $.get("/api/survey" + searchedCharacter, function(data) {
+      $.get("http://localhost:3000/api/" + searchedCharacter, function(data) {
         console.log(data);
         if (data) {
           $("#stats").show();
