@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Find Your Friends</title>
-  <!-- Latest compiled and minified CSS & JS -->
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -13,10 +13,10 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Find Your Friends</h1>
-      <h3>We are here to help you find your best friend!</h3>
+      <h1>Find Your Hiking Buddy</h1>
+      <h3>We are here to help you find the best companion for your hiking adventure!</h3>
       <hr>
-      <a href="/survey"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Add New Friend</button></a>
+      <a href="/survey"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-plus"></span> Add your information</button></a>
     </div>
     <div class="row">
 
@@ -24,13 +24,13 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Friend Search</strong></h3>
+            <h3 class="panel-title"><strong>Companion Search</strong></h3>
           </div>
           <div class="panel-body">
             <input type="text" id="character-search" class="form-control">
             <br>
             <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-search"></span> Search Your Feelings. You know it is true.</button>
+              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="glyphicon glyphicon-search"></span>See other hikers' preferences.</button>
 
             </div>
           </div>
@@ -38,29 +38,28 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Friend Statistics</strong></h3>
+            <h3 class="panel-title"><strong>Hiker Statistics</strong></h3>
           </div>
           <div class="panel-body">
             <div class="well">
               <h2 id="name">Anna</h2>
               <div id="stats">
-                <h3><strong>q1:</strong> <span id="q1">blue</span></h3>
-                <h3><strong>q2:</strong> <span id="q2">fall</span></h3>
-                <h3><strong>q3:</strong> <span id="q3">ocean</span></h3>
-                <h3><strong>q4:</strong> <span id="q4">vegeterian</span></h3>
-                <h3><strong>q5:</strong> <span id="q5">suburbs</span></h3>
+                <h3><strong>q1:</strong> <span id="q1">2</span></h3>
+                <h3><strong>q2:</strong> <span id="q2">3</span></h3>
+                <h3><strong>q3:</strong> <span id="q3">4</span></h3>
+                <h3><strong>q4:</strong> <span id="q4">3</span></h3>
+                <h3><strong>q5:</strong> <span id="q5">1</span></h3>
                 <h3><strong>q6:</strong> <span id="q6">1</span></h3>
-                <h3><strong>q7:</strong> <span id="q7">skiing</span></h3>
-                <h3><strong>q8:</strong> <span id="q8">fiction</span></h3>
-                <h3><strong>q9:</strong> <span id="q9">dogs</span></h3>
-                <h3><strong>q10:</strong> <span id="q10">engineering</span></h3>
+                <h3><strong>q7:</strong> <span id="q7">4</span></h3>
+                <h3><strong>q8:</strong> <span id="q8">2</span></h3>
+                <h3><strong>q9:</strong> <span id="q9">5</span></h3>
+                <h3><strong>q10:</strong> <span id="q10">1</span></h3>
               </div>
             </div>
           </div>
         </div>
       </div>             
     </div>
-    <!--<p><a href="/api/friends">API Friends Link</a>-->
   </div>
 
   <script type="text/javascript">
@@ -68,7 +67,6 @@
       var searchedCharacter = $("#character-search").val().trim();
 
       // Using a RegEx Pattern to remove spaces from searchedCharacter
-      // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
       searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
 
       $.get("http://localhost:3000/api/" + searchedCharacter, function(data) {
@@ -88,7 +86,7 @@
           $("#q10").text(data.q10);
         }
         else {
-          $("#name").text("Your friend was not found.");
+          $("#name").text("This name was not found.");
           $("#stats").hide();
         }
       });

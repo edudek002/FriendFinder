@@ -108,11 +108,13 @@ module.exports = function(app) {
 
     if (deltaFirst>=deltaSecond)
     {
-      console.log("Your best match is " + friendsData[1].name);
+      console.log("The best match for your hiking adventure is " + friendsData[1].name);
+      alert("The best match for your hiking adventure is " + friendsData[1].name);
     }
 
     else {
-      console.log("Your best match is " + friendsData[0].name);
+      console.log("The best match for your hiking adventure is  " + friendsData[0].name);
+      alert("The best match for your hiking adventure is  " + friendsData[0].name);
     }
 
   });
