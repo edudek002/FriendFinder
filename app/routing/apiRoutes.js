@@ -17,6 +17,9 @@ var scoresFirst=[];
 var scoresSecond=[];
 var scoresNew=[];
 
+var lengthFriendsData = 0;
+var columns =[];
+
 
 
 
@@ -75,6 +78,12 @@ module.exports = function(app) {
 
     console.log(friendsData);
 
+    lengthFriendsData = friendsData.length - 1;
+
+    console.log("Number of friends to compare " + lengthFriendsData);
+
+
+
     //building scores array for the new friend
 
     scoresNew.push(parseInt(newFriend.q1));
@@ -92,6 +101,35 @@ module.exports = function(app) {
 
     
     console.log(friendsData[1].name);
+
+
+    var numrows = lengthFriendsData;
+
+    var numcols = 10;
+
+    
+    var my2Darray = Array.matrix(numrows,numcols,0);
+    
+
+    for (var i = 0; i < numrows; ++i){
+          
+          my2Darray[i][0] = friendsData[i].q1;
+          my2Darray[i][1] = friendsData[i].q2;
+          my2Darray[i][2] = friendsData[i].q3;
+          my2Darray[i][3] = friendsData[i].q4;
+          my2Darray[i][4] = friendsData[i].q5;
+          my2Darray[i][5] = friendsData[i].q6;
+          my2Darray[i][6] = friendsData[i].q7;
+          my2Darray[i][7] = friendsData[i].q8;
+          my2Darray[i][8] = friendsData[i].q9;
+          my2Darray[i][9] = friendsData[i].q10;
+
+          console.log(my2Darray);
+    }
+ 
+    console.log(my2Darray); 
+
+
     numberArray();
 
     var deltaFirst=0;
@@ -109,31 +147,48 @@ module.exports = function(app) {
     if (deltaFirst>=deltaSecond)
     {
       console.log("The best match for your hiking adventure is " + friendsData[1].name);
-      alert("The best match for your hiking adventure is " + friendsData[1].name);
+      //alert("The best match for your hiking adventure is " + friendsData[1].name);
     }
 
     else {
       console.log("The best match for your hiking adventure is  " + friendsData[0].name);
-      alert("The best match for your hiking adventure is  " + friendsData[0].name);
+      //alert("The best match for your hiking adventure is  " + friendsData[0].name);
     }
 
   });
 
 };
 
+Array.matrix = function(numrows, numcols, initial){
+  var arr = [];
+  
+  for (var i = 0; i < numrows; ++i){
+    for (var j = 0; j < numcols; ++j){
+      columns[j] = initial;
+    }   
+    arr[i] = columns;
+  }
+  return arr;
+}
+
 
 function numberArray() {
 
 /*
-
+var scores =[]
 for(var i=0; i<10; i++) {
     scres[i] = [];
     for(var j=0; j<9; j++) {
         scores[i][j] = undefined;
     }
 }
-
 */
+
+
+
+
+
+
 
 
 scoresFirst.push(parseInt(friendsData[0].q1));
@@ -149,9 +204,9 @@ scoresFirst.push(parseInt(friendsData[0].q10));
 
 console.log(scoresFirst);
 
-var sum = scoresFirst[1] + scoresFirst[2];
+//var sum = scoresFirst[1] + scoresFirst[2];
 
-console.log("Sum = " + sum); 
+//console.log("Sum = " + sum); 
 
 scoresSecond.push(parseInt(friendsData[1].q1));
 scoresSecond.push(parseInt(friendsData[1].q2));
@@ -166,9 +221,13 @@ scoresSecond.push(parseInt(friendsData[1].q10));
 
 console.log(scoresSecond);
 
-var sum = scoresSecond[1] + scoresSecond[2];
+//var sum = scoresSecond[1] + scoresSecond[2];
 
-console.log("Sum = " + sum); 
+//console.log("Sum = " + sum); 
 
 }
+
+
+
+
 
