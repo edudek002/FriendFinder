@@ -69,7 +69,7 @@
       // Using a RegEx Pattern to remove spaces from searchedCharacter
       searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
 
-      $.get("http://localhost:3000/api/" + searchedCharacter, function(data) {
+      $.get("/api/" + searchedCharacter, function(data) {
         console.log(data);
         if (data) {
           $("#stats").show();
