@@ -171,8 +171,30 @@
                   <option value="5">5 (Strongly Agree)</option>
                 </select>
               <div>
-              
 
+              <!-- Modal -->
+              <!--
+              <div id="myModal" class="modal fade in" role="dialog" style="display: block; padding-right: 17px;">
+                <div class="modal-dialog">
+
+                  
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                      <h2 class="modal-title"><strong>Best Match</strong></h2>
+                    </div>
+                    <div class="modal-body">
+                      <h2 id="match-name">Companion</h2>
+                      <img id="match-img" src="No" alt="">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>   
+            --> 
               
             </form>
             <br>
@@ -186,51 +208,12 @@
     </div>   
   </div>
 
-  <!-- Modal -->
-  <!--
-  <div id="results-modal" class="modal fade in" role="dialog" style="display: block; padding-right: 17px;">
-    <div class="modal-dialog">
+  
 
-      
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
-          <h2 class="modal-title"><strong>Best Match</strong></h2>
-        </div>
-        <div class="modal-body">
-          <h2 id="match-name">Meh</h2>
-          <img id="match-img" src="No" alt="">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>-->   
+  
 
   <script type="text/javascript">
-    /*
-    var config = {
-      ".chosen-select": {},
-      ".chosen-select-deselect": {
-        allow_single_deselect: true
-      },
-      ".chosen-select-no-single": {
-        disable_search_threshold: 10
-      },
-      ".chosen-select-no-results": {
-        no_results_text: "Oops, nothing found!"
-      },
-      ".chosen-select-width": {
-        width: "95%"
-      }
-    };
-
-    for (var selector in config) {
-      $(selector).chosen(config[selector]);
-    }
-    */
+    
     // Question: What does this code do?
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
@@ -248,6 +231,18 @@
         q9: $("#q9").val().trim(),
         q10: $("#q10").val().trim()
       };
+
+    // AJAX post the data to the friends API.
+      //$.post("/api/friends", function(data) {
+
+        // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+        //$("#match-name").text(winnerName);
+        //$("#match-img").attr("src", data.photo);
+
+        // Show the modal with the best match
+        //$("#results-modal").modal("toggle");
+
+      //});
 
       
       
@@ -283,12 +278,4 @@
 
 
 
-
-  
-
-  
-
-  
-
-
-
+    

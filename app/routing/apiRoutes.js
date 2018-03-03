@@ -98,6 +98,10 @@ module.exports = function(app) {
     }
     console.log("\nSmallest points difference for all hikers = " + winner); 
     console.log("\nThe best match for your hiking adventure is " + winnerName);
+    /*if (winnerName) {
+      modal.style.display = "block";
+      return false;
+    }*/
   });
 };
 
