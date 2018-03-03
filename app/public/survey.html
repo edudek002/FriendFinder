@@ -184,14 +184,59 @@
 
       </div>
     </div>   
-  </div>   
+  </div>
+
+  <!-- Modal -->
+  <!--
+  <div id="results-modal" class="modal fade in" role="dialog" style="display: block; padding-right: 17px;">
+    <div class="modal-dialog">
+
+      
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h2 class="modal-title"><strong>Best Match</strong></h2>
+        </div>
+        <div class="modal-body">
+          <h2 id="match-name">Meh</h2>
+          <img id="match-img" src="No" alt="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>-->   
 
   <script type="text/javascript">
+    /*
+    var config = {
+      ".chosen-select": {},
+      ".chosen-select-deselect": {
+        allow_single_deselect: true
+      },
+      ".chosen-select-no-single": {
+        disable_search_threshold: 10
+      },
+      ".chosen-select-no-results": {
+        no_results_text: "Oops, nothing found!"
+      },
+      ".chosen-select-width": {
+        width: "95%"
+      }
+    };
+
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+    */
     // Question: What does this code do?
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
       var newPerson = {
         name: $("#name").val().trim(),
+        photo: $("#photo").val(),
         q1: $("#q1").val().trim(),
         q2: $("#q2").val().trim(),
         q3: $("#q3").val().trim(),
@@ -203,19 +248,9 @@
         q9: $("#q9").val().trim(),
         q10: $("#q10").val().trim()
       };
-      /*
-      var Points = [($("#name").val().trim()),
-                    parseInt($("#q1").val().trim()),
-                    parseInt($("#q2").val().trim()),
-                    parseInt($("#q3").val().trim()),
-                    parseInt($("#q4").val().trim()),
-                    parseInt($("#q5").val().trim()),
-                    parseInt($("#q6").val().trim()),
-                    parseInt($("#q7").val().trim()),
-                    parseInt($("#q8").val().trim()),
-                    parseInt($("#q9").val().trim()),
-                    parseInt($("#q10").val().trim())];
-      */
+
+      
+      
       // Create a newPerson request
       $.post("/api/new", newPerson)
       .then(function(data) {
@@ -224,6 +259,7 @@
 
         // Clear the form when submitting
           $("#name").val("");
+          $("#photo").val(""),
           $("#q1").val("");
           $("#q2").val("");
           $("#q3").val("");
@@ -238,6 +274,21 @@
     });
 
   </script>
-
+  <!--<div class="modal-backdrop fade in">
+  </div>-->
 </body>
 </html>
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+
