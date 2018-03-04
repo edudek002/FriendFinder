@@ -174,28 +174,9 @@
                     </select>
                   </div>
                 </div>
-              </div>
-              <!--
-              <div>
-                <div>  
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">×</button>
-                      <h2 class="modal-title"><strong>Best Match</strong></h2>
-                    </div>
-                    <div class="modal-body">
-                      <h2 id="match-name">Companion</h2>
-                      <img id="match-img" src="No" alt="">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>   
-              -->
-              
+              </div>  
             </form>
+
             <br>
             <div class="text-center">
               <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span></span>SUBMIT SURVEY</button>
@@ -211,14 +192,11 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Your best match is:</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h3 class="modal-title" id="exampleModalLabel">Your best hiking companion is:</h5>
                   </div>
                   <div class="modal-body">
                       <h2 id="match-name">Companion</h2>
-                      <!--<img id="match-img" src="No" alt="">-->
+                      <img id="match-img" src="" alt="">
                     </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -275,21 +253,13 @@
           $("#q10").val("");     
       });
 
-      //get a winner for
-
-      $.get("/api/new", function(data) {
-        console.log(data);
-        
-        $("#match-name").text(winnerName);
-      });
-    
-    
-      function modal() {
       var currentURL = window.location.origin;
-      $.ajax({ url: currentURL + "/api/survey", method: "POST" });
-      $("#match-name").text("John");
-      }
-      modal();
+      $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+      .then(function(friends) {
+        var w = friends.length-1;
+        $("#match-name").text(friends[w].name);
+        $("match-img").text(friends[w].photo);
+      });
     });
 
   </script>

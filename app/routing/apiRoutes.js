@@ -7,7 +7,10 @@ var friendsData = require("../data/friends.js");
 var friends = require("../data/friends.js");
 
 module.exports = function(app) {
-
+  // API GET Requests
+  // Below code handles when users "visit" a page.
+  // In each of the below cases when a user visits a link
+  // -------------------------------------------------------------
   app.get("/api/friends", function(req, res) {
     res.json(friends);
   });
@@ -27,7 +30,11 @@ module.exports = function(app) {
     return res.json(friends);
   });
 
+  // API POST Requests
+  // Below code handles when a user submits a form and thus submits data to the server.
+  // In each of the below cases, when a user submits form data (a JSON object)
   //Display data using JSON
+  // -------------------------------------------------------------
   app.post("/api/survey", function(req, res) {
     // req.body is available since we're using the body-parser middleware
     friendsData.push(req.body);
@@ -93,18 +100,15 @@ module.exports = function(app) {
       if (delta<=winner){
         winner=delta;
         winnerName = friendsData[i].name;
+        w=i;
         }     
     }
+    friendsData.push(friendsData[w]);
     console.log("\nSmallest points difference for all hikers = " + winner); 
     console.log("\nThe best match for your hiking adventure is " + winnerName);
     
   });
   
-  app.post("/api/survey", function(data) {
-    console.log("MY DATA" + winnerName);
-    //console.log("WIINERNAME" + data.winnerName);
-  });
-
 };
 
 
