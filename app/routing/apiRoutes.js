@@ -11,7 +11,7 @@ module.exports = function(app) {
   app.get("/api/friends", function(req, res) {
     res.json(friends);
   });
-
+  //Display data on SURVEY page using JSON
   app.post("/api/survey", function(req, res) {
     // req.body is available since we're using the body-parser middleware
     friendsData.push(req.body);
@@ -92,17 +92,25 @@ module.exports = function(app) {
       if (delta<=winner){
         winner=delta;
         winnerName = friendsData[i].name;
-        //console.log("winner =" + winner);
-        //console.log("Companion name " + winnerName);
         }     
     }
     console.log("\nSmallest points difference for all hikers = " + winner); 
     console.log("\nThe best match for your hiking adventure is " + winnerName);
-    /*if (winnerName) {
-      modal.style.display = "block";
-      return false;
-    }*/
+    
   });
+  ////
+  app.get("/api/", function(data) {
+    console.log("MY DATA");
+    //console.log("WIINERNAME" + data.winnerName);
+  });
+  app.post("/api/survey", function(data) {
+    console.log("MY DATA" + winnerName);
+    //console.log("WIINERNAME" + data.winnerName);
+  });
+
+
+
+
 };
 
 
