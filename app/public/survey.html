@@ -233,13 +233,9 @@
     </div>   
   </div>
 
-  
-
-  
-
   <script type="text/javascript">
     
-    // Question: What does this code do?
+    // Adding button to enter new Person
     $("#add-btn").on("click", function(event) {
       event.preventDefault();
       var newPerson = {
@@ -281,13 +277,19 @@
 
       //get a winner for
 
-      $.get("/api/", function(data) {
+      $.get("/api/new", function(data) {
         console.log(data);
         
-        $("#match-name").text("Mike");
+        $("#match-name").text(winnerName);
       });
-
-
+    
+    
+      function modal() {
+      var currentURL = window.location.origin;
+      $.ajax({ url: currentURL + "/api/survey", method: "POST" });
+      $("#match-name").text("John");
+      }
+      modal();
     });
 
   </script>
