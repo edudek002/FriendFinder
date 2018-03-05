@@ -5,6 +5,7 @@
 
 var friendsData = require("../data/friends.js");
 var friends = require("../data/friends.js");
+var winners = require("../data/winners.js");
 
 module.exports = function(app) {
   // API GET Requests
@@ -13,6 +14,10 @@ module.exports = function(app) {
   // -------------------------------------------------------------
   app.get("/api/friends", function(req, res) {
     res.json(friends);
+  });
+
+  app.get("/api/winners", function(req, res) {
+    res.json(winners);
   });
 
   // Search for Specific Friend - provides JSON
@@ -76,7 +81,7 @@ module.exports = function(app) {
     console.log("\nNumber of hikers to compare: " + lengthFriendsData);
 
     var scores =[,];
-    var winner = 50;
+    var deltaMin = 50;
 
     for (var i=0; i<lengthFriendsData; i++)
     {
@@ -97,14 +102,14 @@ module.exports = function(app) {
       delta+=Math.abs(scoresNew[j]-scores[i,j]);
       }
       console.log("Points difference for this hiker is " + delta);
-      if (delta<=winner){
-        winner=delta;
+      if (delta<=deltaMin){
+        deltaMin=delta;
         winnerName = friendsData[i].name;
         w=i;
         }     
     }
-    friendsData.push(friendsData[w]);
-    console.log("\nSmallest points difference for all hikers = " + winner); 
+    winners.push(friendsData[w]);
+    console.log("\nSmallest points difference for all hikers = " + deltaMin); 
     console.log("\nThe best match for your hiking adventure is " + winnerName);
     
   });

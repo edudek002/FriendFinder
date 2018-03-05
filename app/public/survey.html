@@ -254,11 +254,11 @@
       });
 
       var currentURL = window.location.origin;
-      $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-      .then(function(friends) {
-        var w = friends.length-1;
-        $("#match-name").text(friends[w].name);
-        $("match-img").text(friends[w].photo);
+      $.ajax({ url: currentURL + "/api/winners", method: "GET" })
+      .then(function(winners) {
+        var w = winners.length-1;
+        $("#match-name").text(winners[w].name);
+        $("match-img").text(winners[w].photo);
       });
     });
 
