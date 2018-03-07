@@ -18,13 +18,18 @@ You can find the service on
 
 1. Find Your Hiking Buddy - main page
 
+![Main Page](/images/FriendFinder_main.png)
+
+
 * The client can view hikers stored in the Database 
 * The client can enter the name of the hiker to learn this hiker's statistics, that will be displayed on the right side
 * The client has an option to enter their own information by selecting the
  Click here to enter your information
  button.
 
- 1. Hikers Express - survey page
+ 2. Hikers Express - survey page
+
+ ![Survey Page](./images/FriendFinder_survey.png)
 
  * The client answers 10 questions, each answer is on a scale of 1 to 5 based on how much the client agrees or disagrees with a question.
  The clients then selects
